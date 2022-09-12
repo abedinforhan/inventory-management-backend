@@ -1,4 +1,6 @@
 const mongoose = require('mongoose')
+const { ObjectId } = mongoose.Schema.Types;
+
 // schema design
 const productSchema = mongoose.Schema({
     name: {
@@ -40,7 +42,7 @@ const productSchema = mongoose.Schema({
           }
         }
       },
-      message: "Qunatity must be an integer"
+      message: "Quantity must be an integer"
     },
     status: {
       type: String,
@@ -50,25 +52,21 @@ const productSchema = mongoose.Schema({
         message: "status can't be {VALUE}"
       }
     },
-    // createdAt: {
-    //   type: Date,
-    //   default: Date.now,
-    // },
-    // updatedAt: {
-    //   type: Date,
-    //   detfault: Date.now
-    // }
-    // supplier: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "Supplier"
-    // },
-    // categories: [{
-    //   name: {
-    //     type: String,
-    //     required: true
-    //   },
-    //   _id: mongoose.Schema.Types.ObjectId
-    // }]
+    supplier:[ {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Supplier"
+    }],
+    categories: [{
+      name: {
+        type: String,
+        required: true
+      },
+      _id: mongoose.Schema.Types.ObjectId
+    }],
+    brand: {
+      name: String,
+      brandId: ObjectId
+    }
   }, {
     timestamps: true,
   })

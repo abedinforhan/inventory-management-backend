@@ -1,8 +1,8 @@
-const { getProductsService, createProductService } = require("../services/product.services")
+const { getProductsService, createProductService, updateProductByIdService, getProductByIdService } = require("../services/product.services")
 
 
 
-exports.getProducts = async (req, res, next) => {
+exports.getProducts = async (req, res) => {
     try {
         // const products = await Product
         //   .where("name").equals(/\w/)
@@ -25,8 +25,7 @@ exports.getProducts = async (req, res, next) => {
 }
 
 
-
-exports.createProduct = async (req, res, next) => {
+exports.createProduct = async (req, res) => {
 
     try {
         // save or create
@@ -40,6 +39,7 @@ exports.createProduct = async (req, res, next) => {
             messgae: 'Data inserted successfully!',
             data: result
         })
+      
     } catch (error) {
         res.status(400).json({
             status: 'fail',
@@ -48,4 +48,42 @@ exports.createProduct = async (req, res, next) => {
         })
     }
 
+}
+
+
+exports.getProductById = async (req, res) => {
+
+    try {
+        const id = req.params.id
+        const product = await getProductByIdService(id)
+
+       res.status(200).json({
+            status: 'success',
+            data: product
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            error: error.message
+        })
+    }
+
+}
+
+exports.updateProductById = async (req,res) =>{
+  
+    try {
+        const query = req.params.id
+        const product = await updateProductByIdService(id)
+
+       res.status(200).json({
+            status: 'success',
+            data: product
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: 'fail',
+            error: error.message
+        })
+    }
 }
