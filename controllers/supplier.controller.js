@@ -1,13 +1,11 @@
-const {
-  getProductsService,
-  createProductService,
-  updateProductByIdService,
-  getProductByIdService,
-} = require("../services/product.service");
+const { createSupplierService } = require("../services/supplier.service");
 
-exports.getProducts = async (req, res) => {
+
+
+
+exports.getSuppliers = async (req, res) => {
   try {
-    const products = await getProductsService(req.query.limit);
+    // const products = await getProductsService(req.query.limit);
 
     res.status(200).json({
       status: "success",
@@ -22,32 +20,30 @@ exports.getProducts = async (req, res) => {
   }
 };
 
-exports.createProduct = async (req, res) => {
+exports.createSupplier = async (req, res) => {
   try {
-    // save or create
-
-    const result = await createProductService(req.body);
-
-    result.logger();
+    console.log(req.body.contactNumber);
+    console.log(Array.isArray(req.body.contactNumber));
+    const newSupplier = await createSupplierService(req.body);
 
     res.status(200).json({
       status: "success",
-      messgae: "Data inserted successfully!",
-      data: result,
+      messgae: "Supplier created successfully !",
+      data: newSupplier,
     });
   } catch (error) {
     res.status(400).json({
       status: "fail",
-      message: " Data is not inserted ",
+      message: "Supplier creation failed ! ",
       error: error.message,
     });
   }
 };
 
-exports.getProductById = async (req, res) => {
+exports.getSupplierById = async (req, res) => {
   try {
-    const id = req.params.id;
-    const product = await getProductByIdService(id);
+    // const id = req.params.id;
+    // const product = await getProductByIdService(id);
 
     res.status(200).json({
       status: "success",
@@ -61,10 +57,10 @@ exports.getProductById = async (req, res) => {
   }
 };
 
-exports.updateProductById = async (req, res) => {
+exports.updateSupplierById = async (req, res) => {
   try {
-    const query = req.params.id;
-    const product = await updateProductByIdService(id);
+    // const query = req.params.id;
+    // const product = await updateProductByIdService(id);
 
     res.status(200).json({
       status: "success",

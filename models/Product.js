@@ -2,18 +2,20 @@ const mongoose = require('mongoose')
 const { ObjectId } = mongoose.Schema.Types;
 
 // schema design
-const productSchema = mongoose.Schema({
+const productSchema = mongoose.Schema(
+  {
     name: {
       type: String,
       required: [true, "Please provide a name for this product."],
       trim: true,
+      lowercase: true,
       unique: [true, "Name must be unique"],
       minLength: [3, "Name must be at least 3 characters."],
       maxLenght: [100, "Name is too large"],
     },
     description: {
       type: String,
-      required: true
+      required: true,
     },
     price: {
       type: Number,
@@ -25,51 +27,62 @@ const productSchema = mongoose.Schema({
       required: true,
       enum: {
         values: ["kg", "litre", "pcs"],
-        message: "unit value can't be {VALUE}, must be kg/litre/pcs"
-      }
-    },
-    quantity: {
-      type: Number,
-      required: true,
-      min: [0, "quantity cant be negative"],
-      validate: {
-        validator: (value) => {
-          const isInteger = Number.isInteger(value);
-          if (isInteger) {
-            return true
-          } else {
-            return false
-          }
-        }
+        message: "unit value can't be {VALUE}, must be kg/litre/pcs",
       },
-      message: "Quantity must be an integer"
     },
     status: {
       type: String,
       required: true,
       enum: {
         values: ["in-stock", "out-of-stock", "discontinued"],
-        message: "status can't be {VALUE}"
-      }
-    },
-    supplier:[ {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Supplier"
-    }],
-    categories: [{
-      name: {
-        type: String,
-        required: true
+        message: "status can't be {VALUE}",
       },
-      _id: mongoose.Schema.Types.ObjectId
-    }],
-    brand: {
-      name: String,
-      brandId: ObjectId
-    }
-  }, {
+    },
+    suppliers: [
+      {
+        type: ObjectId,
+        ref: "Supplier",
+      },
+    ],
+    categories: [
+      {
+        name: {
+          type: String,
+          required: true,
+        },
+        _id: ObjectId,
+      },
+    ],
+    // brand: {
+    //   name: String,
+    //   brandId: ObjectId,
+    //   ref:"Brand",
+    // },
+    store: [
+      {
+        storeId: {
+          type: ObjectId,
+          required: true,
+          ref: "Store",
+        },
+        name: {
+          type: String,
+          required: true,
+        },
+        divison: {
+          type: String,
+          enum: {
+            values: ["Dhaka", "Chattogram", "Sylhet", "Khulna"],
+            message: "Given {VALUE} is not correct !",
+          },
+        },
+      },
+    ],
+  },
+  {
     timestamps: true,
-  })
+  }
+);
   
   
   
