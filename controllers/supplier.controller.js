@@ -19,7 +19,7 @@ exports.getSuppliers = async (req, res) => {
   }
 };
 
-//CREATE SUPPLIERS
+//CREATE SUPPLIER
 exports.createSupplier = async (req, res) => {
   try {
     const newSupplier = await createSupplierService(req.body);
