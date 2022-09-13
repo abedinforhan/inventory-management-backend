@@ -1,15 +1,14 @@
-const { createSupplierService } = require("../services/supplier.service");
+const { createSupplierService, getSuppliersService, getSupplierByIdService,updateSupplierByIdService} = require("../services/supplier.service");
 
 
-
-
+//GET ALL SUPPLIERS
 exports.getSuppliers = async (req, res) => {
   try {
-    // const products = await getProductsService(req.query.limit);
+    const suppliers = await getSuppliersService();
 
     res.status(200).json({
       status: "success",
-      data: products,
+      data: suppliers,
     });
   } catch (error) {
     res.status(400).json({
@@ -20,10 +19,9 @@ exports.getSuppliers = async (req, res) => {
   }
 };
 
+//CREATE SUPPLIERS
 exports.createSupplier = async (req, res) => {
   try {
-    console.log(req.body.contactNumber);
-    console.log(Array.isArray(req.body.contactNumber));
     const newSupplier = await createSupplierService(req.body);
 
     res.status(200).json({
@@ -40,14 +38,15 @@ exports.createSupplier = async (req, res) => {
   }
 };
 
+//GET SUPPLIER BY ID
 exports.getSupplierById = async (req, res) => {
   try {
-    // const id = req.params.id;
-    // const product = await getProductByIdService(id);
+    const id = req.params.id;
+    const supplier = await getSupplierByIdService(id);
 
     res.status(200).json({
       status: "success",
-      data: product,
+      data: supplier,
     });
   } catch (error) {
     res.status(400).json({
@@ -57,14 +56,18 @@ exports.getSupplierById = async (req, res) => {
   }
 };
 
+//UPDATE SUPPLIER BY ID
 exports.updateSupplierById = async (req, res) => {
   try {
-    // const query = req.params.id;
-    // const product = await updateProductByIdService(id);
+    const filter = { _id : req.params.id };
+    const update = req.body ;
+    const options = { runValidators: true ,new:true};
+
+    const updatedSupplier = await updateSupplierByIdService(filter, update,options);
 
     res.status(200).json({
       status: "success",
-      data: product,
+      data: updatedSupplier,
     });
   } catch (error) {
     res.status(400).json({

@@ -5,12 +5,13 @@ const supplierController = require('../controllers/supplier.controller')
 
 
 router.route('/')
-//.get(supplierController.getProducts)
+.get(supplierController.getSuppliers)
 .post(supplierController.createSupplier)
 
 
 
-// router.route("/:id")
-// .get(productController.getProductById)
+router.route("/:id")
+.get(supplierController.getSupplierById)
+.put(supplierController.updateSupplierById)
 
 module.exports=router

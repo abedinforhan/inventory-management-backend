@@ -1,9 +1,8 @@
 const Supplier = require('../models/Supplier')
 
-
-exports.getProductsService = async (limit) => {
-    const products = await Product.find({}).limit(+limit);
-    return products;
+exports.getSuppliersService = async (limit) => {
+    const suppliers = await Supplier.find({}).select('-__v');
+    return suppliers;
 }
 
 exports.createSupplierService = async (data) => {
@@ -11,12 +10,13 @@ exports.createSupplierService = async (data) => {
     return newSupplier;
 }
 
-exports.getProductByIdService = async (id) =>{
-    const product = await Product.findById(id);
+exports.getSupplierByIdService = async (id) =>{
+    const supplier = await Supplier.findById(id).select('-__v');
+    return supplier;
+}
+
+exports.updateSupplierByIdService= async (filter,update,options) =>{
+    const product = await Supplier.findOneAndUpdate(filter,update,options)
     return product;
 }
 
-exports.updateProductByIdService= async (id) =>{
-    const product = await Product.findByIdAndUpdate()
-    return product;
-}

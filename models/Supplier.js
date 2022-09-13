@@ -24,14 +24,14 @@ const supplierSchema = mongoose.Schema(
       default: 'unknown'
     },
     contactNumber: [{
-      type:String,
+      type: String,
       requird: [true, 'Please provide a contact number'],
-      // validate: {
-      //   validator: (value) => {
-      //     return validator.isMobilePhone(value);
-      //   },
-      //   message: "Please provide a valid phone number",
-      // }
+      validate: {
+        validator: (value) => {
+          return validator.isMobilePhone(value);
+        },
+        message: "Please provide a valid phone number",
+      }
     }],
     emergencyContactNumber: {
       type: String,
@@ -77,10 +77,17 @@ const supplierSchema = mongoose.Schema(
       type: String,
       default: "active",
       enum: ["active", "inactive", "discontinue"],
+    },
+    createdAt: {
+      type: String,
+      default: Date.now(),
+      select: 0,
+    },
+    updatedAt: {
+      type: String,
+      default: Date.now(),
+      select: 0,
     }
-  },
-  {
-    timestamps: true,
   }
 );
 
@@ -101,6 +108,22 @@ module.exports = Supplier;
 "presentAddress":"944 osthir Street",
 "permanentAddress":"944 Russell Street",
 "division":"chattogram",
+"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
+"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
+"status":"active",
+
+*/
+
+/*
+"name":"Abdullah Al Fahim",
+"email":"fahim@test.com",
+"brand":"abdify",
+"contactNumber":"01712345678",
+"emergencyContactNumber":"01712345678",
+"tradeLicenceNumber":"1111111111",
+"presentAddress":"944 abdify Street",
+"permanentAddress":"944 abdify Street",
+"division":"Dhaka",
 "imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
 "nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
 "status":"active",
