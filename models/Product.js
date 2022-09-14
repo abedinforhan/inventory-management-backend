@@ -53,12 +53,12 @@ const productSchema = mongoose.Schema(
         _id: ObjectId,
       },
     ],
-    // brand: {
-    //   name: String,
-    //   brandId: ObjectId,
-    //   ref:"Brand",
-    // },
-    store: [
+    brand: {
+      name: String,
+      type: ObjectId,
+       ref:'Brand',
+    },
+    store: [ 
       {
         storeId: {
           type: ObjectId,

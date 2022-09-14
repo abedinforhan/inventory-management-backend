@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 const validator = require("validator");
 // schema design
+
 const userSchema = mongoose.Schema(
   {
     email: {
@@ -27,10 +28,11 @@ const userSchema = mongoose.Schema(
         message: "Password is not strong enough.",
       },
     },
-    passwordChangedAt: Date,
-    passwordResetToken: String,
-    passwordResetExpires: Date,
-
+    role: {
+      type: String,
+      enum: ["buyer", "store-manager", "admin"],
+      default: "buyer",
+    },
     firstName: {
       type: String,
       required: [true, "Please provide a first name"],
@@ -45,6 +47,7 @@ const userSchema = mongoose.Schema(
       minLength: [3, "Name must be at least 3 characters."],
       maxLenght: [100, "Name is too large"],
     },
+
     contactNumber: [
       {
         type: String,
@@ -58,15 +61,16 @@ const userSchema = mongoose.Schema(
         },
       },
     ],
-    shippingDetails: [String],
-    divison: {
+    shippingAddress: String,
+    division: {
       type: String,
+      required: true,
+      lowercase: true,
       enum: {
-        values: ["Dhaka", "Chattogram", "Sylhet", "Khulna"],
-        message: "Given {VALUE} is not correct !",
+        values: ['dhaka', 'rajshahi', 'chattogram', 'sylhet', 'khulna', 'barishal', 'rangpur', 'mymensingh'],
+        message: "{VALUE} is not  acorrect division!",
       },
     },
-
     imageURL: {
       type: String,
       validate: [validator.isURL, "Please provide a valid url"],
@@ -76,11 +80,31 @@ const userSchema = mongoose.Schema(
       default: "active",
       enum: ["active", "inactive", "blocked"],
     },
-    role: {
+    passwordChangedAt: Date,
+    passwordResetToken: String,
+    passwordResetExpires: Date,
+
+//if this is a manager he needs to give extra info
+    emergencyContactNumber: {
       type: String,
-      enum: ["buyer", "store-manager", "admin"],
-      default: "buyer",
+      validate: {
+        validator: (value) => {
+          return validator.isMobilePhone(value);
+        },
+        message: "Please provide a valid phone number",
+      },
     },
+    presentAddress: {
+      type: String,
+    },
+    permanentAddress: {
+      type: String,
+    },
+    nationalIdImageURL: {
+      type: String,
+      validate: [validator.isURL, "Please provide a valid url"],
+    },
+    
   },
   {
     timestamps: true,
@@ -91,9 +115,46 @@ const User = mongoose.model("User", userSchema);
 
 module.exports = User;
 
-// {
-//   "name": "Mezbah",
-//   "email": "mezbah@gmail.com",
-//   "password": "Mezbah123!",
-//   "phoneNumber": "01812345678"
-// }
+
+/*
+
+/*
+"name":"Mezbaul Abedin Forhan",
+"email":"mezba@test.com",
+"password":"mezba123456##",
+"confirmPassword":"mezba123456##",
+"firtsName":"Mezbaul Abedin",
+"lastName":"Forhan",
+"contactNumber":"11111111111",
+"shippingAddress:"944 osthir Street",
+"presentAddress":"944 osthir Street",
+"permanentAddress":"944 Russell Street",
+"division":"chattogram",
+"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
+"status":"active",
+
+*/
+
+
+//for manager
+
+/*
+"name":"Manager",
+"email":"managerctg@test.com",
+"password":"mezba123456##",
+"confirmPassword":"mezba123456##",
+"firtsName":"Manager of",
+"lastName":"CTG",
+"contactNumber":"11111111111",
+"shippingAddress:"944 osthir Street",
+"division":"chattogram",
+"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
+"status":"active",
+"emergencyContactNumber":"01712345678",
+"presentAddress":"944 osthir Street",
+"permanentAddress":"944 Russell Street",
+"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
+
+
+
+*/

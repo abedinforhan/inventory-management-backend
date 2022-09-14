@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const validator = require("validator")
 
-const storeSchema = mongoose.Schema(
+const stockSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -113,9 +113,9 @@ const storeSchema = mongoose.Schema(
   }
 );
 
-const Store = mongoose.model("Store", storeSchema);
+const Stock = mongoose.model("Stock", stockSchema);
 
-module.exports = Store;
+module.exports = Stock;
 
 
 

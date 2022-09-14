@@ -10,17 +10,7 @@ const categorySchema = mongoose.Schema(
       trim: true,
       unique: [true, "Name must be unique"],
     },
-    description: String,
-    productCount: {
-      type: Number,
-      default: 0,
-      min: 0,
-      validate: {
-        validator: Number.isInteger,
-        message: "Count must be an integer",
-      },
-    },
-
+    description: String
   },
   {
     timestamps: true,
@@ -30,3 +20,20 @@ const categorySchema = mongoose.Schema(
 const Category = mongoose.model("Category", categorySchema);
 
 module.exports = Category;
+
+
+/*
+ {
+  "name":"Rice"
+ }
+*/
+/*
+ {
+  "name":"Oil"
+ }
+*/
+/*
+ {
+  "name":"Dal"
+ }
+*/

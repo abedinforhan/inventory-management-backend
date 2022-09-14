@@ -21,7 +21,6 @@ const supplierSchema = mongoose.Schema(
     brand: {
       type: String,
       trim: true,
-      default: 'unknown'
     },
     contactNumber: [{
       type: String,
