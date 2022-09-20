@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-
+const { ObjectId } = mongoose.Schema.Types;
 // schema design
 const BrandSchema = mongoose.Schema(
   {
@@ -25,6 +25,10 @@ const BrandSchema = mongoose.Schema(
       type: String,
       trim: true,
     },
+    products:[{
+      type:ObjectId,
+      ref:'Product'
+    }]
   },
   {
     timestamps: true,

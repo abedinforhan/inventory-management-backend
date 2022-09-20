@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 
 // schema design
@@ -17,11 +17,6 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    price: {
-      type: Number,
-      rquired: true,
-      min: [0, "Price can't be negative"],
-    },
     unit: {
       type: String,
       required: true,
@@ -38,81 +33,32 @@ const productSchema = mongoose.Schema(
         message: "status can't be {VALUE}",
       },
     },
-    suppliers: [
-      {
-        type: ObjectId,
-        ref: "Supplier",
-      },
-    ],
-    categories: [
-      {
-        name: {
-          type: String,
-          required: true,
-        },
-        _id: ObjectId,
-      },
-    ],
-    brand: {
-      name: String,
-      type: ObjectId,
-       ref:'Brand',
+    category: {
+      type: String,
+      required: true,
     },
-    store: [ 
-      {
-        storeId: {
-          type: ObjectId,
-          required: true,
-          ref: "Store",
-        },
-        name: {
-          type: String,
-          required: true,
-        },
-        divison: {
-          type: String,
-          enum: {
-            values: ["Dhaka", "Chattogram", "Sylhet", "Khulna"],
-            message: "Given {VALUE} is not correct !",
-          },
-        },
-      },
-    ],
+    brand: {
+      type: ObjectId,
+      ref: "Brand",
+    },
   },
   {
     timestamps: true,
   }
 );
-  
-  
-  
-  // mongoose middlewares for saving data: pre / post 
-  
-   productSchema.pre('save',function(next){
-  
-    //this -> 
-     console.log(' Before saving data');
-       if (this.quantity == 0) {
-        this.status = 'out-of-stock'
-      }
-  
-     next()
-   })
-  
-  
-  //  productSchema.post('save',function(doc,next){
-  //   console.log('After saving data');
-  
-  //   next()
-  // })
-  
-  productSchema.methods.logger= function(){
-    console.log(` Data saved for ${this.name}`);
-  }
-  
-  
-  // SCHEMA -> MODEL -> QUERY
-  
-  const Product = mongoose.model('Product', productSchema)
 
-  module.exports = Product;
+
+
+const Product = mongoose.model("Product", productSchema);
+
+module.exports = Product;
+/*
+{
+  "name": "Dal",
+  "description": "Dal or dhal, just like posole (or pozole) is both an ingredient and a dish: it refers to a type of dried split pea or lentil and the deeply spiced stew made from simmering the split peas until nicely broken down.",
+  "unit": "kg",
+  "status": "in-stock",
+  "category":"Dal",
+  "brand":"Pran"
+}
+*/

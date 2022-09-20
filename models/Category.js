@@ -8,9 +8,8 @@ const categorySchema = mongoose.Schema(
       type: String,
       required: [true, "Please provide a name for this category."],
       trim: true,
-      unique: [true, "Name must be unique"],
-    },
-    description: String
+      unique: true
+    }
   },
   {
     timestamps: true,

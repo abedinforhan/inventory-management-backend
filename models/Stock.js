@@ -1,115 +1,85 @@
 const mongoose = require("mongoose");
 const validator = require("validator")
+const { ObjectId } = mongoose.Schema.Types;
+const stockSchema = mongoose.Schema({
 
-const stockSchema = mongoose.Schema(
+  name: {
+    type: String,
+    required: [true, "Please provide a name for this product"],
+    trim: true,
+    lowercase: true,
+    unique: [true, "Name must be unique"],
+    minLength: [3, "Name must be at least 3 characters."],
+    maxLenght: [100, "Name is too large"],
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    rquired: true,
+    min: [0, "Price can't be negative"],
+  },
+  unit: {
+    type: String,
+    required: true,
+    enum: {
+      values: ["kg", "litre", "pcs"],
+      message: "unit value can't be {VALUE}, must be kg/litre/pcs",
+    },
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  status: {
+    type: String,
+    required: true,
+    enum: {
+      values: ["in-stock", "out-of-stock", "discontinued"],
+      message: "status can't be {VALUE}",
+    },
+  },
+  category: {
+    type: String,
+    required: true,
+  },
+  brand: {
+    name: String,
+    id: {
+      type: ObjectId,
+      ref: "Brand",
+    }
+  },
+  store: {
+    type: String,
+    required: true,
+    lowercase: true,
+    enum: {
+      values: [
+        "dhaka",
+        "rajshahi",
+        "chattogram",
+        "sylhet",
+        "khulna",
+        "barishal",
+        "rangpur",
+        "mymensingh",
+      ],
+      message: "{VALUE} is not a correct division!",
+    },
+  },
+  suppliedBy: {
+    name: String,
+    id: {
+      type: ObjectId,
+      ref: 'Supplier'
+    }
+  }
+},
   {
-    name: {
-      type: String,
-      required: [true, "Please provide a name"],
-      trim: true,
-      lowercase: true,
-      minLength: [3, "Name must be at least 3 characters."],
-      maxLenght: [100, "Name is too large"],
-    },
-    description: {
-      type: String,
-    },
-    status: {
-      type: String,
-      enum: ['active', 'inactive'],
-      default: 'active'
-    },
-    division: {
-      type: String,
-      required: true,
-      lowercase: true,
-      enum: {
-        values: ['dhaka', 'rajshahi', 'chattogram', 'sylhet', 'khulna', 'barishal', 'rangpur', 'mymensingh'],
-        message: "{VALUE} is not  acorrect division!",
-      },
-      
-    },
-
-
-
-    // storeManager:{
-    //   name: {
-    //     type: String,
-    //     required: [true, "Please provide a name"],
-    //     trim: true,
-    //     lowercase: true,
-    //     minLength: [3, "Name must be at least 3 characters."],
-    //     maxLenght: [100, "Name is too large"],
-    //   },
-    //   email: {
-    //     type: String,
-    //     validate: [validator.isEmail, "Provide a valid Email"],
-    //     trim: true,
-    //     lowercase: true,
-    //     unique: true,
-    //   },
-    //   contactNumber: [{
-    //     type: String,
-    //     requird: [true, 'Please provide a contact number'],
-    //     validate: {
-    //       validator: (value) => {
-    //         return validator.isMobilePhone(value);
-    //       },
-    //       message: "Please provide a valid phone number",
-    //     }
-    //   }],
-    //   emergencyContactNumber: {
-    //     type: String,
-    //     required: [true, "Please provide  a emergency contact number"],
-    //     validate: {
-    //       validator: (value) => {
-    //         return validator.isMobilePhone(value);
-    //       },
-    //       message: "Please provide a valid phone number",
-    //     },
-    //   },
-    //   presentAddress: {
-    //     type: String,
-    //     required: [true, 'Please provide your present address'],
-    //   },
-    //   permanentAddress: {
-    //     type: String,
-    //     required: [true, 'Please provide your present address'],
-    //   },
-    //   division: {
-    //     type: String,
-    //     required: true,
-    //     lowercase: true,
-    //     enum: {
-    //       values: ['dhaka', 'rajshahi', 'chattogram', 'sylhet', 'khulna', 'barishal', 'rangpur', 'mymensingh'],
-    //       message: "{VALUE} is not  acorrect division!",
-    //     },
-    //   },
-    //   imageURL: {
-    //     type: String,
-    //     validate: [validator.isURL, "Please provide a valid url"],
-    //   },
-    //   nationalIdImageURL: {
-    //     type: String,
-    //     required: true,
-    //     validate: [validator.isURL, "Please provide a valid url"],
-    //   },
-    //   status: {
-    //     type: String,
-    //     default: "active",
-    //     enum: ["active", "inactive"],
-    //   },
-    //   createdAt: {
-    //     type: String,
-    //     default: Date.now(),
-    //     select: 0,
-    //   },
-    //   updatedAt: {
-    //     type: String,
-    //     default: Date.now(),
-    //     select: 0,
-    //   }
-    // }
+    timestamps: true,
   }
 );
 
@@ -121,41 +91,42 @@ module.exports = Stock;
 
 /*
 {
-"name":"Dhaka Store",
-"description":"It is located in dhaka.",
-"status":"active",
-"manager":{
-"name":"Manager od Dhaka",
-"email":"dhakamanager@test.com",
-"contactNumber":"01234567899",
-"emergencyContactNumber":"01234567899",
-"presentAddress":"944 Dhaka Manager Street",
-"permanentAddress":"944 Dhaka Manager Street",
-"division":"dhaka",
-"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"status":"active"
+    "name": "Atha",
+    "description": "Dal or dhal, just like posole (or pozole) is both an ingredient and a dish: it refers to a type of dried split pea or lentil and the deeply spiced stew made from simmering the split peas until nicely broken down.",
+    "price": "50",
+  "unit": "kg",
+    "quantity": 100,
+  "status": "in-stock",
+    "category": "Dal",
+    "brand": {
+        "name": "Teer",
+        "id": "6321fc367f4c3f306c326fd4"
+    },
+    "store": "dhaka",
+    "suppliedBy": {
+        "name": "abdullah al fahim",
+        "id": "6320af51e6e191317ce35858"
+    }
 }
-}
-*/
 
-
-/*
 {
-"name":"Chattogram Store",
-"description":"It is located in chattogram.",
-"status":"active",
-"manager":{
-"name":"Manager of Chattogram",
-"email":"dhakamanager@test.com",
-"contactNumber":"01234567899",
-"emergencyContactNumber":"01234567899",
-"presentAddress":"944 Chattogram Manager Street",
-"permanentAddress":"944 Chattogram  Manager Street",
-"division":"chattogram ",
-"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"status":"active"
+  "name": "Moida",
+  "description": "Dal or dhal, just like posole (or pozole) is both an ingredient and a dish: it refers to a type of dried split pea or lentil and the deeply spiced stew made from simmering the split peas until nicely broken down.",
+  "price":"50".
+  "unit": "kg",
+  "quantity":100.
+  "status": "in-stock",
+  "category":"Dal",
+  "brand":{
+    "name":"Pran",
+    "id":"6321fc737f4c3f306c326fda"
+  },
+  "store":"chattogram",
+  "suppliedBy":{
+    "name":"mezbaul abedin forhan",
+    "id":"6320987755adfe04688d863c"
+  }
+
 }
-}
+
 */
