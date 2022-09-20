@@ -43,12 +43,15 @@ const productSchema = mongoose.Schema(
       },
     },
     category: {
-      type: String,
+      name: String,
       required: true,
     },
     brand: {
-      type: ObjectId,
-      ref: "Brand",
+      name: String,
+      id: {
+        type: ObjectId,
+        ref: "Brand",
+      },
     },
   },
   {

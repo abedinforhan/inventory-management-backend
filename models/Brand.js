@@ -11,24 +11,37 @@ const BrandSchema = mongoose.Schema(
       unique: true,
     },
     description: String,
-    brandEmail: {
+    email: {
       type: String,
       validate: [validator.isEmail, "Provide a valid Email"],
       trim: true,
       lowercase: true,
     },
-    brandWebsite: {
+    website: {
       type: String,
       validate: [validator.isURL, "Please provide a valid url"],
     },
-    brandLocation: {
+    location: {
       type: String,
       trim: true,
     },
-    products:[{
-      type:ObjectId,
-      ref:'Product'
-    }]
+    products: [
+      {
+        type: ObjectId,
+        ref: "Product",
+      },
+    ],
+    suppliers: [
+      {
+        type: ObjectId,
+        ref: "Supplier",
+      },
+    ],
+    status: {
+      type: String,
+      enum: ["active", "inactive"],
+      default: "active",
+    },
   },
   {
     timestamps: true,
@@ -38,7 +51,6 @@ const BrandSchema = mongoose.Schema(
 const Brand = mongoose.model("Brand", BrandSchema);
 
 module.exports = Brand;
-
 
 /*
 {
@@ -53,5 +65,3 @@ module.exports = Brand;
     "description": "TEER is the most acclaimed brand of City Group with footprint in edible oil, atta, flour, semolina, rice, lentil, sugar and animal feed products. The brand is synonymous to health, hygiene and excellence."
 }
 */
-
-

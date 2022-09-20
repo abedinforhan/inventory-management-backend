@@ -5,11 +5,21 @@ const storeSchema = mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Please provide a name"],
-      trim: true,
+      required: true,
       lowercase: true,
-      minLength: [3, "Name must be at least 3 characters."],
-      maxLength: [100, "Name is too large"],
+      enum: {
+        values: ["dhaka", "rajshahi", "chattogram", "sylhet", "khulna", "barishal", "rangpur", "mymensingh"],
+        message: "{VALUE} is not  acorrect division!",
+      },
+      manager: {
+        id: {
+          type: ObjectId,
+          ref: "User"
+        },
+        contactNumber: String,
+        name: String,
+      }
+      
     },
     description: {
       type: String,
@@ -18,16 +28,6 @@ const storeSchema = mongoose.Schema(
       type: String,
       enum: ["active", "inactive"],
       default: "active"
-    },
-    division: {
-      type: String,
-      required: true,
-      lowercase: true,
-      enum: {
-        values: ["dhaka", "rajshahi", "chattogram", "sylhet", "khulna", "barishal", "rangpur", "mymensingh"],
-        message: "{VALUE} is not  acorrect division!",
-      },
-      
     },
 
 

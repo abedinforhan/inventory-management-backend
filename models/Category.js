@@ -9,7 +9,9 @@ const categorySchema = mongoose.Schema(
       required: [true, "Please provide a name for this category."],
       trim: true,
       unique: true
-    }
+    },
+    description: String,
+    imageURL: String
   },
   {
     timestamps: true,
