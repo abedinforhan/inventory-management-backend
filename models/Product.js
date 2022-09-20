@@ -22,6 +22,9 @@ const productSchema = mongoose.Schema(
       type: [String],
       validate: {
         validator: (value) => {
+          if(!value || !Array.isArray(value)){
+            return false
+          }
           let allOk = true;
           value.forEach((v) => {
             console.log(validator.isURL(v));
@@ -38,7 +41,7 @@ const productSchema = mongoose.Schema(
       type: String,
       required: true,
       enum: {
-        values: ["kg", "litre", "pcs"],
+        values: ["kg", "litre", "pcs", "bag"],
         message: "unit value can't be {VALUE}, must be kg/litre/pcs",
       },
     },
@@ -58,6 +61,9 @@ const productSchema = mongoose.Schema(
     timestamps: true,
   }
 );
+
+// New Unit: Bag
+// Price discount?
 
 
 const Product = mongoose.model("Product", productSchema);
