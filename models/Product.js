@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 const validator = require("validator");
 
-// schema design
+
 const productSchema = mongoose.Schema(
   {
     name: {
@@ -22,7 +22,7 @@ const productSchema = mongoose.Schema(
       type: [String],
       validate: {
         validator: (value) => {
-          if(!value || !Array.isArray(value)){
+          if (!value || !Array.isArray(value)) {
             return false
           }
           let allOk = true;
@@ -42,17 +42,19 @@ const productSchema = mongoose.Schema(
       required: true,
       enum: {
         values: ["kg", "litre", "pcs", "bag"],
-        message: "unit value can't be {VALUE}, must be kg/litre/pcs",
+        message: "unit value can't be {VALUE}, must be kg/litre/pcs/bag",
       },
     },
     category: {
-      name: String,
+      type: String,
       required: true,
     },
     brand: {
       name: String,
+      required: true,
       id: {
         type: ObjectId,
+        required: true,
         ref: "Brand",
       },
     },
@@ -62,20 +64,7 @@ const productSchema = mongoose.Schema(
   }
 );
 
-// New Unit: Bag
-// Price discount?
-
 
 const Product = mongoose.model("Product", productSchema);
 
 module.exports = Product;
-/*
-{
-  "name": "Dal",
-  "description": "Dal or dhal, just like posole (or pozole) is both an ingredient and a dish: it refers to a type of dried split pea or lentil and the deeply spiced stew made from simmering the split peas until nicely broken down.",
-  "unit": "kg",
-  "status": "in-stock",
-  "category":"Dal",
-  "brand":"Pran"
-}
-*/
