@@ -11,7 +11,7 @@ const supplyHistorySchema = mongoose.Schema(
     },
     price: {
       type: Number,
-      rquired: true,
+      required: true,
       min: [0, "Price can't be negative"],
     },
     quantity: {

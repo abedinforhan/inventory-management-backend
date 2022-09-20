@@ -38,20 +38,20 @@ const userSchema = mongoose.Schema(
       required: [true, "Please provide a first name"],
       trim: true,
       minLength: [3, "Name must be at least 3 characters."],
-      maxLenght: [100, "Name is too large"],
+      maxLength: [100, "Name is too large"],
     },
     lastName: {
       type: String,
       required: [true, "Please provide a first name"],
       trim: true,
       minLength: [3, "Name must be at least 3 characters."],
-      maxLenght: [100, "Name is too large"],
+      maxLength: [100, "Name is too large"],
     },
 
     contactNumber: [
       {
         type: String,
-        requird: true,
+        required: true,
         unique: true,
         validate: {
           validator: (value) => {
@@ -67,7 +67,7 @@ const userSchema = mongoose.Schema(
       required: true,
       lowercase: true,
       enum: {
-        values: ['dhaka', 'rajshahi', 'chattogram', 'sylhet', 'khulna', 'barishal', 'rangpur', 'mymensingh'],
+        values: ["dhaka", "rajshahi", "chattogram", "sylhet", "khulna", "barishal", "rangpur", "mymensingh"],
         message: "{VALUE} is not  acorrect division!",
       },
     },

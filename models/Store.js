@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const validator = require("validator")
+const validator = require("validator");
 
 const storeSchema = mongoose.Schema(
   {
@@ -9,22 +9,22 @@ const storeSchema = mongoose.Schema(
       trim: true,
       lowercase: true,
       minLength: [3, "Name must be at least 3 characters."],
-      maxLenght: [100, "Name is too large"],
+      maxLength: [100, "Name is too large"],
     },
     description: {
       type: String,
     },
     status: {
       type: String,
-      enum: ['active', 'inactive'],
-      default: 'active'
+      enum: ["active", "inactive"],
+      default: "active"
     },
     division: {
       type: String,
       required: true,
       lowercase: true,
       enum: {
-        values: ['dhaka', 'rajshahi', 'chattogram', 'sylhet', 'khulna', 'barishal', 'rangpur', 'mymensingh'],
+        values: ["dhaka", "rajshahi", "chattogram", "sylhet", "khulna", "barishal", "rangpur", "mymensingh"],
         message: "{VALUE} is not  acorrect division!",
       },
       
@@ -39,7 +39,7 @@ const storeSchema = mongoose.Schema(
     //     trim: true,
     //     lowercase: true,
     //     minLength: [3, "Name must be at least 3 characters."],
-    //     maxLenght: [100, "Name is too large"],
+    //     maxLength: [100, "Name is too large"],
     //   },
     //   email: {
     //     type: String,
@@ -50,7 +50,7 @@ const storeSchema = mongoose.Schema(
     //   },
     //   contactNumber: [{
     //     type: String,
-    //     requird: [true, 'Please provide a contact number'],
+    //     required: [true, 'Please provide a contact number'],
     //     validate: {
     //       validator: (value) => {
     //         return validator.isMobilePhone(value);

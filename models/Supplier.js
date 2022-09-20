@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const validator = require("validator")
+const validator = require("validator");
 
 const supplierSchema = mongoose.Schema(
   {
@@ -9,7 +9,7 @@ const supplierSchema = mongoose.Schema(
       trim: true,
       lowercase: true,
       minLength: [3, "Name must be at least 3 characters."],
-      maxLenght: [100, "Name is too large"],
+      maxLength: [100, "Name is too large"],
     },
     email: {
       type: String,
@@ -24,7 +24,7 @@ const supplierSchema = mongoose.Schema(
     },
     contactNumber: [{
       type: String,
-      requird: [true, 'Please provide a contact number'],
+      required: [true, "Please provide a contact number"],
       validate: {
         validator: (value) => {
           return validator.isMobilePhone(value);
@@ -44,22 +44,22 @@ const supplierSchema = mongoose.Schema(
     },
     tradeLicenceNumber: {
       type: Number,
-      required: [true, 'Please provide your trade licence number'],
+      required: [true, "Please provide your trade licence number"],
     },
     presentAddress: {
       type: String,
-      required: [true, 'Please provide your present address'],
+      required: [true, "Please provide your present address"],
     },
     permanentAddress: {
       type: String,
-      required: [true, 'Please provide your present address'],
+      required: [true, "Please provide your present address"],
     },
     division: {
       type: String,
       required: true,
       lowercase: true,
       enum: {
-        values: ['dhaka', 'rajshahi', 'chattogram', 'sylhet', 'khulna', 'barishal', 'rangpur', 'mymensingh'],
+        values: ["dhaka", "rajshahi", "chattogram", "sylhet", "khulna", "barishal", "rangpur", "mymensingh"],
         message: "{VALUE} is not  acorrect division!",
       },
     },

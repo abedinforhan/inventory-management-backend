@@ -28,7 +28,7 @@ exports.createBrand = async (req, res) => {
 
     res.status(200).json({
       status: "success",
-      messgae: "Brand created successfully!",
+      message: "Brand created successfully!",
       data: newBrand,
     });
   } catch (error) {

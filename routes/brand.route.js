@@ -1,11 +1,11 @@
-const express=require('express')
-const router=express.Router()
-const brandController = require('../controllers/brand.controller')
+const express=require("express");
+const router=express.Router();
+const brandController = require("../controllers/brand.controller");
 
 
 
-router.route('/')
+router.route("/")
 .get(brandController.getBrands)
-.post(brandController.createBrand)
+.post(brandController.createBrand);
 
-module.exports=router
+module.exports=router;
