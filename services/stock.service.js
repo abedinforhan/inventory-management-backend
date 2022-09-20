@@ -1,26 +1,22 @@
 const Stock = require("../models/Stock");
 
-exports.getStocksService = async (limit) => {
-  const stocks = await Stock.find({});
-  return stocks;
+
+exports.getProductsFromStocksService = async () => {
+  const products = await Stock.find({});
+  return products;
 };
 
-exports.createStockService = async (data) => {
-  const stock = await Stock.create(data);
-  return stock;
-};
-
-exports.getStockByIdService = async (id) => {
-  const stock = await Stock.findById(id);
-  return stock;
-};
-
-exports.getStockByStoreIdService = async (id, properties) => {
-  const stocks = await Stock.find({ "store.stockId": id }, properties);
-  return stocks;
-};
-
-exports.updateProductByIdService = async (id) => {
-  const product = await Stock.findByIdAndUpdate();
+exports.createProductInStockService = async (data) => {
+  const product = await Stock.create(data);
   return product;
 };
+
+// exports.getProductByIdService = async (id) =>{
+//     const product = await Product.findById(id);
+//     return product;
+// }
+
+// exports.updateProductByIdService= async (id) =>{
+//     const product = await Product.findByIdAndUpdate()
+//     return product;
+// }

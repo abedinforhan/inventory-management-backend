@@ -5,6 +5,10 @@ const {
   getProductByIdService,
 } = require("../services/product.service");
 
+//Model
+const Brand = require('../models/Brand')
+
+
 exports.getProducts = async (req, res) => {
   try {
     const products = await getProductsService(req.query.limit);
@@ -24,21 +28,23 @@ exports.getProducts = async (req, res) => {
 
 exports.createProduct = async (req, res) => {
   try {
-    // save or create
-
     const result = await createProductService(req.body);
+    const productId = result._id;
+    await Brand.updateOne(
+      { _id: result.brand },
+      { $push: { products: productId } }
+    )
 
-    result.logger();
 
     res.status(200).json({
       status: "success",
-      messgae: "Data inserted successfully!",
+      messgae: "data inserted successfully!",
       data: result,
     });
   } catch (error) {
     res.status(400).json({
       status: "fail",
-      message: " Data is not inserted ",
+      message: " data is not inserted ",
       error: error.message,
     });
   }

@@ -6,7 +6,7 @@ const colors = require("colors");
 const app = require("./app");
 
 // database connection
-mongoose.connect(process.env.DATABASE_LOCAL, { useUnifiedTopology: true, useNewUrlParser: true })
+mongoose.connect(process.env.DATABASE, { useUnifiedTopology: true, useNewUrlParser: true })
   .then(() => {
     console.log(`Database connection is successful 🛢`.red.bold);
   })

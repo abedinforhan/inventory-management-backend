@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema.Types;
 const validator = require("validator");
 
-const supplierSchema = mongoose.Schema(
+// schema design
+const managerSchema = mongoose.Schema(
   {
     name: {
       type: String,
@@ -9,7 +11,7 @@ const supplierSchema = mongoose.Schema(
       trim: true,
       lowercase: true,
       minLength: [3, "Name must be at least 3 characters."],
-      maxLength: [100, "Name is too large"],
+      maxLenght: [100, "Name is too large"],
     },
     email: {
       type: String,
@@ -18,13 +20,9 @@ const supplierSchema = mongoose.Schema(
       lowercase: true,
       unique: true,
     },
-    brand: {
-      type: String,
-      trim: true,
-    },
     contactNumber: [{
       type: String,
-      required: [true, "Please provide a contact number"],
+      requird: [true, 'Please provide a contact number'],
       validate: {
         validator: (value) => {
           return validator.isMobilePhone(value);
@@ -42,24 +40,20 @@ const supplierSchema = mongoose.Schema(
         message: "Please provide a valid phone number",
       },
     },
-    tradeLicenceNumber: {
-      type: Number,
-      required: [true, "Please provide your trade licence number"],
-    },
     presentAddress: {
       type: String,
-      required: [true, "Please provide your present address"],
+      required: [true, 'Please provide your present address'],
     },
     permanentAddress: {
       type: String,
-      required: [true, "Please provide your present address"],
+      required: [true, 'Please provide your present address'],
     },
-    store: {
+    division: {
       type: String,
       required: true,
       lowercase: true,
       enum: {
-        values: ["dhaka", "rajshahi", "chattogram", "sylhet", "khulna", "barishal", "rangpur", "mymensingh"],
+        values: ['dhaka', 'rajshahi', 'chattogram', 'sylhet', 'khulna', 'barishal', 'rangpur', 'mymensingh'],
         message: "{VALUE} is not  acorrect division!",
       },
     },
@@ -75,7 +69,7 @@ const supplierSchema = mongoose.Schema(
     status: {
       type: String,
       default: "active",
-      enum: ["active", "inactive", "discontinue"],
+      enum: ["active", "inactive"],
     },
     createdAt: {
       type: String,
@@ -88,43 +82,8 @@ const supplierSchema = mongoose.Schema(
       select: 0,
     }
   }
-);
+)
 
-const Supplier = mongoose.model("Supplier", supplierSchema);
+const Manager =mongoose.model('Manager',managerSchema)
 
-module.exports = Supplier;
-
-
-
-
-/*
-"name":"Mezbaul Abedin Forhan",
-"email":"mezba@test.com",
-"brand":"osthir",
-"contactNumber":"01712345678",
-"emergencyContactNumber":"01712345678",
-"tradeLicenceNumber":"1111111111",
-"presentAddress":"944 osthir Street",
-"permanentAddress":"944 Russell Street",
-"store":"chattogram",
-"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"status":"active",
-
-*/
-
-/*
-"name":"Abdullah Al Fahim",
-"email":"fahim@test.com",
-"brand":"abdify",
-"contactNumber":"01712345678",
-"emergencyContactNumber":"01712345678",
-"tradeLicenceNumber":"1111111111",
-"presentAddress":"944 abdify Street",
-"permanentAddress":"944 abdify Street",
-"store":"Dhaka",
-"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"status":"active",
-
-*/
+module.exports=Manager;

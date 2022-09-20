@@ -43,21 +43,12 @@ const productSchema = mongoose.Schema(
       },
     },
     category: {
-      name: {
-        type: String,
-        required: true,
-      },
-      _id: ObjectId,
+      type: String,
+      required: true,
     },
     brand: {
-      name: {
-        type: String,
-        default: "no-brand",
-      },
-      brandId: {
-        type: ObjectId,
-        ref: "Brand",
-      },
+      type: ObjectId,
+      ref: "Brand",
     },
   },
   {
@@ -65,30 +56,17 @@ const productSchema = mongoose.Schema(
   }
 );
 
-// mongoose middlewares for saving data: pre / post
-
-productSchema.pre("save", function (next) {
-  //this ->
-  console.log(" Before saving data");
-  if (this.quantity == 0) {
-    this.status = "out-of-stock";
-  }
-
-  next();
-});
-
-//  productSchema.post('save',function(doc,next){
-//   console.log('After saving data');
-
-//   next()
-// })
-
-productSchema.methods.logger = function () {
-  console.log(` Data saved for ${this.name}`);
-};
-
-// SCHEMA -> MODEL -> QUERY
 
 const Product = mongoose.model("Product", productSchema);
 
 module.exports = Product;
+/*
+{
+  "name": "Dal",
+  "description": "Dal or dhal, just like posole (or pozole) is both an ingredient and a dish: it refers to a type of dried split pea or lentil and the deeply spiced stew made from simmering the split peas until nicely broken down.",
+  "unit": "kg",
+  "status": "in-stock",
+  "category":"Dal",
+  "brand":"Pran"
+}
+*/

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { ObjectId } = mongoose.Schema.Types;
 const validator = require("validator");
 // schema design
 
@@ -47,7 +46,6 @@ const userSchema = mongoose.Schema(
       minLength: [3, "Name must be at least 3 characters."],
       maxLength: [100, "Name is too large"],
     },
-
     contactNumber: [
       {
         type: String,
@@ -83,28 +81,6 @@ const userSchema = mongoose.Schema(
     passwordChangedAt: Date,
     passwordResetToken: String,
     passwordResetExpires: Date,
-
-//if this is a manager he needs to give extra info
-    emergencyContactNumber: {
-      type: String,
-      validate: {
-        validator: (value) => {
-          return validator.isMobilePhone(value);
-        },
-        message: "Please provide a valid phone number",
-      },
-    },
-    presentAddress: {
-      type: String,
-    },
-    permanentAddress: {
-      type: String,
-    },
-    nationalIdImageURL: {
-      type: String,
-      validate: [validator.isURL, "Please provide a valid url"],
-    },
-    
   },
   {
     timestamps: true,
