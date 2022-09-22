@@ -2,14 +2,12 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 const validator = require("validator");
 
-
 const productSchema = mongoose.Schema(
   {
     name: {
       type: String,
       required: [true, "Please provide a name for this product."],
       trim: true,
-      lowercase: true,
       unique: [true, "Name must be unique"],
       minLength: [3, "Name must be at least 3 characters."],
       maxLength: [100, "Name is too large"],
@@ -50,8 +48,10 @@ const productSchema = mongoose.Schema(
       required: true,
     },
     brand: {
-      name: String,
-      required: true,
+      name: {
+        type: String,
+        required: true,
+      },
       id: {
         type: ObjectId,
         required: true,

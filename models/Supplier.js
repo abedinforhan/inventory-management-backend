@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
-
+const { ObjectId } = mongoose.Schema.Types;
 const supplierSchema = mongoose.Schema(
   {
     name: {
@@ -19,8 +19,16 @@ const supplierSchema = mongoose.Schema(
       unique: true,
     },
     brand: {
-      type: String,
-      trim: true,
+      name: {
+        type: String,
+        trim: true,
+        required: true,
+      },
+      id: {
+        type: ObjectId,
+        required: true,
+        ref:"Brand"
+      }
     },
     contactNumber: [{
       type: String,
@@ -95,36 +103,3 @@ const Supplier = mongoose.model("Supplier", supplierSchema);
 module.exports = Supplier;
 
 
-
-
-/*
-"name":"Mezbaul Abedin Forhan",
-"email":"mezba@test.com",
-"brand":"osthir",
-"contactNumber":"01712345678",
-"emergencyContactNumber":"01712345678",
-"tradeLicenceNumber":"1111111111",
-"presentAddress":"944 osthir Street",
-"permanentAddress":"944 Russell Street",
-"store":"chattogram",
-"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"status":"active",
-
-*/
-
-/*
-"name":"Abdullah Al Fahim",
-"email":"fahim@test.com",
-"brand":"abdify",
-"contactNumber":"01712345678",
-"emergencyContactNumber":"01712345678",
-"tradeLicenceNumber":"1111111111",
-"presentAddress":"944 abdify Street",
-"permanentAddress":"944 abdify Street",
-"store":"Dhaka",
-"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"status":"active",
-
-*/

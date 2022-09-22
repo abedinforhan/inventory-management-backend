@@ -2,9 +2,15 @@ const Supplier = require('../models/Supplier')
 
 
 //GET ALL SUPPLIERS
-exports.getSuppliersService = async (limit) => {
-    const suppliers = await Supplier.find({}).select('-__v');
-    return suppliers;
+exports.getSuppliersService = async () => {
+    const suppliers = await Supplier.find({})
+    .populate(
+        {
+            path:"brand",
+            populate:({path:"id",model:"Brand",select:"-products"})
+        })
+   
+        return suppliers;
 }
 
 //CREATE SUPPLIERS

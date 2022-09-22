@@ -1,0 +1,42 @@
+[
+  {
+    "contactNumber": ["01712345678"],
+    "status": "active",
+    "createdAt": "1663867450730",
+    "updatedAt": "1663867450730",
+    "name": "mezbaul abedin persian",
+    "email": "mezba@test.com",
+    "brand": {
+      "name": "pran",
+      "id": "632c933a45dd242074a7a1a1"
+    },
+    "emergencyContactNumber": "01712345678",
+    "tradeLicenceNumber": 1111111111,
+    "presentAddress": "944 osthir Street",
+    "permanentAddress": "944 Russell Street",
+    "store": "chattogram",
+    "imageURL": "https://i.ibb.co/WnFSs9Y/unnamed.webp",
+    "nationalIdImageURL": "https://i.ibb.co/WnFSs9Y/unnamed.webp",
+    "__v": 0
+  },
+  {
+    "contactNumber": ["01712345678"],
+    "status": "active",
+    "createdAt": "1663867450730",
+    "updatedAt": "1663867450730",
+    "name": "abdullah al fahim",
+    "email": "fahim@test.com",
+    "brand": {
+      "name": "fresh",
+      "id": "632c8ac387c9e063388535a3"
+    },
+    "emergencyContactNumber": "01712345678",
+    "tradeLicenceNumber": 1111111111,
+    "presentAddress": "944 abdify Street",
+    "permanentAddress": "944 abdify Street",
+    "store": "dhaka",
+    "imageURL": "https://i.ibb.co/WnFSs9Y/unnamed.webp",
+    "nationalIdImageURL": "https://i.ibb.co/WnFSs9Y/unnamed.webp",
+    "__v": 0
+  }
+]

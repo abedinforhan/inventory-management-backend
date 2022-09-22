@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const { ObjectId } = mongoose.Schema.Types;
 const storeSchema = mongoose.Schema(
   {
     name: {
@@ -7,7 +7,16 @@ const storeSchema = mongoose.Schema(
       required: true,
       lowercase: true,
       enum: {
-        values: ["dhaka", "rajshahi", "chattogram", "sylhet", "khulna", "barishal", "rangpur", "mymensingh"],
+        values: [
+          "dhaka",
+          "rajshahi",
+          "chattogram",
+          "sylhet",
+          "khulna",
+          "barishal",
+          "rangpur",
+          "mymensingh"
+        ],
         message: "{VALUE} is not  acorrect division!",
       },
     },
@@ -38,44 +47,3 @@ const Store = mongoose.model("Store", storeSchema);
 module.exports = Store;
 
 
-
-/*
-{
-"name":"Dhaka Store",
-"description":"It is located in dhaka.",
-"status":"active",
-"manager":{
-"name":"Manager of Dhaka",
-"email":"dhakamanager@test.com",
-"contactNumber":"01234567899",
-"emergencyContactNumber":"01234567899",
-"presentAddress":"944 Dhaka Manager Street",
-"permanentAddress":"944 Dhaka Manager Street",
-"division":"dhaka",
-"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"status":"active"
-}
-}
-*/
-
-
-/*
-{
-"name":"Chattogram Store",
-"description":"It is located in chattogram.",
-"status":"active",
-"manager":{
-"name":"Manager of Chattogram",
-"email":"dhakamanager@test.com",
-"contactNumber":"01234567899",
-"emergencyContactNumber":"01234567899",
-"presentAddress":"944 Chattogram Manager Street",
-"permanentAddress":"944 Chattogram  Manager Street",
-"division":"chattogram ",
-"imageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"nationalIdImageURL":"https://i.ibb.co/WnFSs9Y/unnamed.webp",
-"status":"active"
-}
-}
-*/
