@@ -5,18 +5,15 @@ exports.createBrandService = async (data) => {
   return newBrand;
 }
 
-
 exports.getBrandsService = async () => {
   const brands = await Brand.find({});
   return brands;
 }
 
-
 exports.getBrandByIdService = async (id) => {
   const brand = await Brand.findOne({ _id: id });
   return brand;
 }
-
 
 exports.updateBrandService = async (id, data) => {
   const result = await Brand.updateOne({ _id: id }, data, {

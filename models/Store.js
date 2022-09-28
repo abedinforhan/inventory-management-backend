@@ -46,4 +46,3 @@ const Store = mongoose.model("Store", storeSchema);
 
 module.exports = Store;
 
-

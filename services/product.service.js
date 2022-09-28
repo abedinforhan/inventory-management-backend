@@ -22,7 +22,7 @@ exports.updateProductByIdService= async (id) =>{
 }
 
 exports.addProductIdToBrandService = async (query, productId) => {
-    const result = await Brand.update(
+    const result = await Brand.updateOne(
       { _id: query },
       { $push: { products: productId } }
     )
