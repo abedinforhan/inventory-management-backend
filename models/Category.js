@@ -13,6 +13,10 @@ const categorySchema = mongoose.Schema({
   imageUrl: {
     type: String,
     validate: [validator.isURL, "Please provide a valid URL"]
+  },
+  createdBy:{
+    type:String,
+    required:true
   }
 }, {
   timestamps: true
