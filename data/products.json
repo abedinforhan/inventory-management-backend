@@ -1,114 +1,151 @@
 [
   {
+    "_id": {
+      "$oid": "636fe9465cd130eeced93505"
+    },
     "name": "Pran Chinigura Aromatic Rice - 5kg Bag",
     "description": "Pran Chinigura Aromatic Rice (Polau). Fresh and Clean, Vacuum Packed. Pran Chinigura Rice can be use in Biriyani, Polau, Firni, Kheer, Khichuri.",
-    "imageURLs": [
+    "unit": "bag",
+    "category": "rice",
+    "brandName": "Pran",
+    "brandId": "634ec3620d503db9c6277076",
+    "productImage": "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1",
+    "otherImages": [
       "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1",
       "https://chaldn.com/_mpimage/pran-nazirshail-rice-5-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48089&q=low&v=1&m=400&webp=1"
-    ],
-    "unit": "bag",
-    "category": "Rice",
-    "brand": {
-      "name": "Pran",
-      "id": "..."
-    }
+    ]
   },
   {
+    "_id": {
+      "$oid": "636fe9465cd130eeced93506"
+    },
     "name": "Pran Chinigura Aromatic Rice - 50kg",
     "description": "Pran Chinigura Aromatic Rice (Polau). Fresh and Clean, Vacuum Packed. Pran Chinigura Rice can be use in Biriyani, Polau, Firni, Kheer, Khichuri.",
-    "imageURLs": [
+    "otherImages": [
       "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1",
       "https://chaldn.com/_mpimage/pran-nazirshail-rice-5-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48089&q=low&v=1&m=400&webp=1"
     ],
+    "productImage": "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1",
     "unit": "bag",
-    "category": "Rice",
-    "brand": {
-      "name": "Pran",
-      "id": "..."
-    }
+    "category": "rice",
+    "brandName": "Pran",
+    "brandId": "634ec3620d503db9c6277076"
   },
-
   {
+    "_id": {
+      "$oid": "636fe9465cd130eeced93507"
+    },
     "name": "Pran Nazirshail Rice - 5kg",
     "description": "Pran Nazirshail Rice. Fresh and Clean, Vacuum Packed. Pran Chinigura Rice can be use in Biriyani, Polau, Firni, Kheer, Khichuri.",
-    "imageURLs": [
+    "otherImages": [
       "https://chaldn.com/_mpimage/pran-nazirshail-rice-5-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48089&q=low&v=1&m=400&webp=1",
       "https://chaldn.com/_mpimage/pran-chinigura-aromatic-rice-2-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D108114&q=best&v=1&m=400&webp=1"
     ],
+    "productImage": "https://chaldn.com/_mpimage/pran-nazirshail-rice-5-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48089&q=low&v=1&m=400&webp=1",
     "unit": "bag",
-    "category": "Rice",
-    "brand": {
-      "name": "Pran",
-      "id": "..."
-    }
+    "category": "rice",
+    "brandName": "Pran",
+    "brandId": "634ec3620d503db9c6277076"
   },
-
   {
+    "_id": {
+      "$oid": "636fe9465cd130eeced93508"
+    },
     "name": "Fresh Chinigura Rice",
     "description": "Fresh Chinigura Rice. Fresh and Clean, Vacuum Packed. Fresh Chinigura Rice can be use in Biriyani, Polau, Firni, Kheer, Khichuri.",
-    "imageURLs": [
+    "otherImages": [
       "https://chaldn.com/_mpimage/fresh-chinigura-rice-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D84466&q=low&v=1&m=400&webp=1"
     ],
+    "productImage": "https://chaldn.com/_mpimage/fresh-chinigura-rice-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D84466&q=low&v=1&m=400&webp=1",
     "unit": "kg",
-    "category": "Rice",
-    "brand": {
-      "name": "Fresh",
-      "id": "..."
-    }
+    "category": "rice",
+    "brandName": "Fresh",
+    "brandId": "634ec3620d503db9c6277074"
   },
-
   {
+    "_id": {
+      "$oid": "636fe9465cd130eeced93509"
+    },
     "name": "ACI Pure Miniket Rice Premium",
     "description": "ACI Pure Miniket Rice Premium. Fresh and Clean, Vacuum Packed. ACI Pure Miniket Rice Premium can be use in Biriyani, Polau, Firni, Kheer, Khichuri.",
-    "imageURLs": [
+    "otherImages": [
       "https://chaldn.com/_mpimage/aci-pure-miniket-rice-premium-10-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48063&q=best&v=1&m=400&webp=1"
     ],
+    "productImage": " https://chaldn.com/_mpimage/aci-pure-miniket-rice-premium-10-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D48063&q=best&v=1&m=400&webp=1",
     "unit": "kg",
-    "category": "Rice",
-    "brand": {
-      "name": "ACI",
-      "id": "..."
-    }
+    "category": "rice",
+    "brandName": "ACI",
+    "brandId": "634ec3620d503db9c6277073"
   },
-
   {
+    "_id": {
+      "$oid": "636fe9465cd130eeced9350a"
+    },
     "name": "Fresh Fortified Soyabean Oil - 5ltr",
     "description": "Fresh Fortified Soyabean Oil follows 3 steps of refining process-Perfect Degumming & Neutralization, Balanced De-colorization and Five steps Deodorization to ensure right ratio of Omega 3 & 6 and intact Beta-carotene in Soyabean Oil. Fresh soyabean oil contain vitamin A. Its fresh and healthy.",
-    "imageURLs": [
+    "otherImages": [
       "https://chaldn.com/_mpimage/fresh-fortified-soyabean-oil-5-ltr?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D93160&q=best&v=1&m=400&webp=1"
     ],
+    "productImage": "https://chaldn.com/_mpimage/fresh-fortified-soyabean-oil-5-ltr?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D93160&q=best&v=1&m=400&webp=1",
     "unit": "litre",
-    "category": "Oil",
-    "brand": {
-      "name": "Fresh",
-      "id": "..."
-    }
+    "category": "oil",
+    "brandName": "Fresh",
+    "brandId": "634ec3620d503db9c6277074"
   },
   {
+    "_id": {
+      "$oid": "636fe9465cd130eeced9350b"
+    },
     "name": "Rupchanda Fortified Soyabean Oil - 5ltr",
     "description": "First Vitamin A fortified Soyabean Oil. Increases immunity. Strengthens bone & teeth.",
-    "imageURLs": [
+    "otherImages": [
       "https://chaldn.com/_mpimage/rupchanda-fortified-soyabean-oil-5-ltr?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D92500&q=best&v=1&m=400&webp=1"
     ],
+    "productImage": "https://chaldn.com/_mpimage/rupchanda-fortified-soyabean-oil-5-ltr?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D92500&q=best&v=1&m=400&webp=1",
     "unit": "litre",
-    "category": "Oil",
-    "brand": {
-      "name": "Rupchanda",
-      "id": "632c8ac387c9e063388535a4"
-    }
+    "category": "oil",
+    "brandName": "Rupchanda",
+    "brandId": "634ec3620d503db9c6277075"
   },
-
   {
+    "_id": {
+      "$oid": "636fe9465cd130eeced9350c"
+    },
     "name": "Fresh Refined Sugar",
     "description": "Fresh Refined sugar is a modern processes of without touching hand to protect the health of assurance. Fresh refined sugar is completely acid, fecal residues free and neat and clean, healthy, granulated sugar.",
-    "imageURLs": [
+    "otherImages": [
       "https://chaldn.com/_mpimage/fresh-refined-sugar-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D113128&q=best&v=1&m=400&webp=1"
     ],
+    "productImage": "https://chaldn.com/_mpimage/fresh-refined-sugar-1-kg?src=https%3A%2F%2Feggyolk.chaldal.com%2Fapi%2FPicture%2FRaw%3FpictureId%3D113128&q=best&v=1&m=400&webp=1",
     "unit": "kg",
-    "category": "Sugar",
-    "brand": {
-      "name": "Fresh",
-      "id": "..."
-    }
+    "category": "sugar",
+    "brandName": "Fresh",
+    "brandId": "634ec3620d503db9c6277074"
+  },
+  {
+    "_id": {
+      "$oid": "6373f9da1c1c23d2000cfb23"
+    },
+    "name": "Test",
+    "description": "Testing",
+    "productImage": "https://i.ibb.co/zr9ff0T/persian.jpg",
+    "otherImages": [],
+    "unit": "pcs",
+    "category": "sugar",
+    "brandName": "Rupchanda",
+    "brandID": {
+      "$oid": "635eb3341754f5f1bfa74ef0"
+    },
+    "createdAt": {
+      "$date": {
+        "$numberLong": "1668544986184"
+      }
+    },
+    "updatedAt": {
+      "$date": {
+        "$numberLong": "1668544986184"
+      }
+    },
+    "__v": 0
   }
 ]
